@@ -1,11 +1,11 @@
 import { Button } from '@chakra-ui/react';
 import axios from 'axios';
 import { useState } from 'react';
+import MovieDisplay from './MovieDisplay';
 
 
-export const FetchMovieButton = () => {
+export const FetchMovieButton = ({movie}) => {
 
-  const [movie,setMovie] = useState({});
   
   const fetchMovie = async () => {
 
@@ -17,9 +17,8 @@ export const FetchMovieButton = () => {
       });
 
     const randomID =  Math.floor(Math.random() * 250) + 1;
-    setMovie(res.data['items'][randomID]);
     
-    console.log(movie);
+    movie(res.data['items'][randomID]);
     
 
   } catch (err) {
