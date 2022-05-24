@@ -19,8 +19,8 @@ return (
     <Image
       borderRadius='lg'
       width={{ md: 40 }}
-      src='https://imgs.search.brave.com/9JMcbmSBxJW-NHHIminopOU39396FwmfuSmjXuM6xeQ/rs:fit:1200:628:1/g:ce/aHR0cHM6Ly9wb3N0/Lm1lZGljYWxuZXdz/dG9kYXkuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy9zaXRlcy8z/LzIwMjAvMDIvMzIz/MDU3XzIyMDAtMTIw/MHg2MjguanBn'
-      alt='Test'
+      src={movie != null ? movie.image : "https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo._CB410901634_.png" }
+      alt='https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo._CB410901634_.png'
     />
   </Box>
   <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
