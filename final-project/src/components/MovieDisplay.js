@@ -11,7 +11,9 @@ import {
   Button,
 } from '@chakra-ui/react';
 
+
 import SaveMovieButton from './SaveMovieButton';
+
 export const MovieDisplay = ({movie}) => {
 
 return (
@@ -20,8 +22,8 @@ return (
     <Image
       borderRadius='lg'
       width={{ md: 40 }}
-      src='https://imgs.search.brave.com/9JMcbmSBxJW-NHHIminopOU39396FwmfuSmjXuM6xeQ/rs:fit:1200:628:1/g:ce/aHR0cHM6Ly9wb3N0/Lm1lZGljYWxuZXdz/dG9kYXkuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy9zaXRlcy8z/LzIwMjAvMDIvMzIz/MDU3XzIyMDAtMTIw/MHg2MjguanBn'
-      alt='Test'
+      src={movie != null ? movie.image : "https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo._CB410901634_.png" }
+      alt='https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo._CB410901634_.png'
     />
   </Box>
   <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
@@ -42,10 +44,20 @@ return (
       fontWeight='semibold'
       href='#'
     >
-      "Add title of movie"
+    IMDB rating: {movie != null ? movie.imDbRating : null}
+    </Text>
+    <Text
+      mt={1}
+      display='block'
+      fontSize='lg'
+      lineHeight='normal'
+      fontWeight='semibold'
+      href='#'
+    >
+    Rank: {movie != null ? movie.rank  : null}
     </Text>
     <Text mt={2} color='gray.500'>
-      Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie
+      Crew: {movie != null ? movie.crew : null}
     </Text>
     <SaveMovieButton />
   </Box>
