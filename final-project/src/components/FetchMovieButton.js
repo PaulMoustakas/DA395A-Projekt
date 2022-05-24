@@ -17,7 +17,6 @@ export const FetchMovieButton = ({movie}) => {
       });
 
     const randomID =  Math.floor(Math.random() * 250) + 1;
-    console.log(movie);
     movie(res.data['items'][randomID]);
 
   } catch (err) {

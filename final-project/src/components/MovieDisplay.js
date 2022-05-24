@@ -19,8 +19,8 @@ return (
     <Image
       borderRadius='lg'
       width={{ md: 40 }}
-      src='https://imgs.search.brave.com/9JMcbmSBxJW-NHHIminopOU39396FwmfuSmjXuM6xeQ/rs:fit:1200:628:1/g:ce/aHR0cHM6Ly9wb3N0/Lm1lZGljYWxuZXdz/dG9kYXkuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy9zaXRlcy8z/LzIwMjAvMDIvMzIz/MDU3XzIyMDAtMTIw/MHg2MjguanBn'
-      alt='Test'
+      src={movie != null ? movie.image : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/640px-IMDB_Logo_2016.svg.png'}
+
     />
   </Box>
   <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
@@ -31,7 +31,7 @@ return (
       letterSpacing='wide'
       color='teal.600'
     >
-      {movie != null ? movie.fullTitle : null}
+      {movie != null ? movie.fullTitle : null }
     </Text>
     <Text
       mt={1}
@@ -41,7 +41,7 @@ return (
       fontWeight='semibold'
       href='#'
     >
-    IMDB rating: {movie != null ? movie.imDbRating : null}
+    {movie != null ? "IMDB Rating" +  movie.imDbRating : null}
     </Text>
     <Text
       mt={1}
@@ -51,10 +51,10 @@ return (
       fontWeight='semibold'
       href='#'
     >
-    Rank: {movie != null ? movie.rank  : null}
+    {movie != null ? "Rank: "+movie.rank  :  null}
     </Text>
     <Text mt={2} color='gray.500'>
-      Crew: {movie != null ? movie.crew : null}
+     {movie != null ? "Crew:" + movie.crew : null}
     </Text>
   </Box>
 </Box>
