@@ -11,6 +11,9 @@ import {
   Button,
 } from '@chakra-ui/react';
 
+
+import SaveMovieButton from './SaveMovieButton';
+
 export const MovieDisplay = ({movie}) => {
 
 return (
@@ -56,6 +59,7 @@ return (
     <Text mt={2} color='gray.500'>
       Crew: {movie != null ? movie.crew : null}
     </Text>
+    <SaveMovieButton />
   </Box>
 </Box>
 );
