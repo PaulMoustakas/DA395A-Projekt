@@ -31,7 +31,7 @@ return (
       letterSpacing='wide'
       color='teal.600'
     >
-      Title
+      hej
     </Text>
     <Text
       mt={1}
