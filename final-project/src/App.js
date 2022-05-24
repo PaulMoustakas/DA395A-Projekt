@@ -1,5 +1,4 @@
 import React from 'react';
-import useState from 'react'
 import {
   ChakraProvider,
   Box,
@@ -17,8 +16,6 @@ import { Divider } from './components/Divider';
 import { WatchList } from './components/WatchList';
 import FetchMovieButton from './components/FetchMovieButton';
 import { useState } from 'react';
-
-
 
 function App() {
 
