@@ -11,6 +11,9 @@ import {
   Button,
 } from '@chakra-ui/react';
 
+
+import SaveMovieButton from './SaveMovieButton';
+
 export const MovieDisplay = ({movie}) => {
 
 return (
@@ -19,8 +22,9 @@ return (
     <Image
       borderRadius='lg'
       width={{ md: 40 }}
-      src={movie != null ? movie.image : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/640px-IMDB_Logo_2016.svg.png'}
 
+      src={movie != null ? movie.image : "https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo._CB410901634_.png" }
+      alt='https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo._CB410901634_.png'
     />
   </Box>
   <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
@@ -57,6 +61,7 @@ return (
      {movie != null ? "Crew:" + movie.crew : null}
     </Text>
   </Box>
+  <SaveMovieButton />
 </Box>
 );
 }
