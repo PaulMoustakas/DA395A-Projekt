@@ -1,4 +1,5 @@
 import React from 'react';
+import useState from 'react'
 import {
   ChakraProvider,
   Box,
@@ -13,7 +14,9 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Header } from './components/Header';
 import { MovieDisplay } from './components/MovieDisplay';
 import { Divider } from './components/Divider';
+import { WatchList } from './components/WatchList';
 import FetchMovieButton from './components/FetchMovieButton';
+
 
 
 function App() {
@@ -25,10 +28,11 @@ function App() {
           <VStack spacing={8}>
 
           <Header />
+          <MovieDisplay />
           <FetchMovieButton/>
           <MovieDisplay/>
           <Divider />
-          <MovieDisplay/>
+          <WatchList/>
 
           </VStack>
         </Grid>
