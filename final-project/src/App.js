@@ -16,10 +16,16 @@ import { MovieDisplay } from './components/MovieDisplay';
 import { Divider } from './components/Divider';
 import { WatchList } from './components/WatchList';
 import FetchMovieButton from './components/FetchMovieButton';
+import { useState } from 'react';
 
 
 
 function App() {
+
+const [movie,setMovie] = useState(null);
+
+console.log(movie)
+
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
@@ -28,6 +34,8 @@ function App() {
           <VStack spacing={8}>
 
           <Header />
+          <FetchMovieButton movie={ response => setMovie(response)} />
+          <MovieDisplay />
           <FetchMovieButton/>
           <MovieDisplay />
           <Divider />
@@ -38,6 +46,7 @@ function App() {
       </Box>
     </ChakraProvider>
   );
+
 }
 
 export default App;
