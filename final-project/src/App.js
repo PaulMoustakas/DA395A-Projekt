@@ -32,12 +32,9 @@ console.log(movie)
 
           <Header />
           <FetchMovieButton movie={ response => setMovie(response)} />
-          <MovieDisplay />
-          <FetchMovieButton/>
-          <MovieDisplay />
+          <MovieDisplay movie={movie} />
           <Divider />
           <WatchList/>
-
           </VStack>
         </Grid>
       </Box>

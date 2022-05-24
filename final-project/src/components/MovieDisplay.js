@@ -8,8 +8,8 @@ import {
   Grid,
   Image,
   theme,
+  Button,
 } from '@chakra-ui/react';
-
 
 export const MovieDisplay = ({movie}) => {
 
@@ -41,10 +41,20 @@ return (
       fontWeight='semibold'
       href='#'
     >
-      "Add title of movie"
+    IMDB rating: {movie != null ? movie.imDbRating : null}
+    </Text>
+    <Text
+      mt={1}
+      display='block'
+      fontSize='lg'
+      lineHeight='normal'
+      fontWeight='semibold'
+      href='#'
+    >
+    Rank: {movie != null ? movie.rank  : null}
     </Text>
     <Text mt={2} color='gray.500'>
-      Add description of Movie
+      Crew: {movie != null ? movie.crew : null}
     </Text>
   </Box>
 </Box>
