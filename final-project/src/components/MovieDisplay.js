@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 
 
-export const MovieDisplay = () => {
+export const MovieDisplay = ({movie}) => {
 
 return (
 <Box p={4} display={{ md: 'flex' }}>
@@ -31,7 +31,7 @@ return (
       letterSpacing='wide'
       color='teal.600'
     >
-      hej
+      {movie != null ? movie.fullTitle : null}
     </Text>
     <Text
       mt={1}

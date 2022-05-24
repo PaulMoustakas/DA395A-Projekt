@@ -28,9 +28,8 @@ function App() {
           <VStack spacing={8}>
 
           <Header />
-          <MovieDisplay />
           <FetchMovieButton/>
-          <MovieDisplay/>
+          <MovieDisplay />
           <Divider />
           <WatchList/>
 
