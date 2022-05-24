@@ -13,6 +13,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Header } from './components/Header';
 import { MovieDisplay } from './components/MovieDisplay';
 import { Divider } from './components/Divider';
+import FetchMovieButton from './components/FetchMovieButton';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <VStack spacing={8}>
 
           <Header />
+          <FetchMovieButton/>
           <MovieDisplay/>
           <Divider />
           <MovieDisplay/>
