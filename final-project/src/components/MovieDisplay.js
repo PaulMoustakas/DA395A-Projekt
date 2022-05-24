@@ -8,9 +8,10 @@ import {
   Grid,
   Image,
   theme,
+  Button,
 } from '@chakra-ui/react';
 
-
+import SaveMovieButton from './SaveMovieButton';
 export const MovieDisplay = ({movie}) => {
 
 return (
@@ -44,8 +45,9 @@ return (
       "Add title of movie"
     </Text>
     <Text mt={2} color='gray.500'>
-      Add description of Movie
+      Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie Add description of Movie
     </Text>
+    <SaveMovieButton />
   </Box>
 </Box>
 );
