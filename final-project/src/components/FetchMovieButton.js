@@ -9,7 +9,7 @@ export const FetchMovieButton = ({movie}) => {
 
   const fetchMovie = async () => {
 
-    const imdbKey = 'k_qwo5vxl7';
+    const imdbKey = 'k_khdf7dt8';
 
 
     try {
