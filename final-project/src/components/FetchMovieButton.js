@@ -1,19 +1,26 @@
 import { Button } from '@chakra-ui/react';
-import axios from 'axios'
+import axios from 'axios';
+import { useState } from 'react';
 
 
 export const FetchMovieButton = () => {
+
+  const [movie,setMovie] = useState({});
   
-  const fetchMovie = async e => {
+  const fetchMovie = async () => {
 
     const imdbKey = 'k_qwo5vxl7';
+    
 
     try {
       const res = await axios.get('https://imdb-api.com/en/API/Top250Movies/'+imdbKey, {
       });
 
-      console.log(res.data);
-
+    const randomID =  Math.floor(Math.random() * 250) + 1;
+    setMovie(res.data['items'][randomID]);
+    
+    console.log(movie);
+    
 
   } catch (err) {
       console.log(err);
