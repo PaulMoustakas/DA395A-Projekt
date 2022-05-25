@@ -1,27 +1,17 @@
 import { Button } from '@chakra-ui/react';
-import LoadFromLocal from './LoadFromLocalStorage';
-
+import { populateList } from './WatchList';
 
 export const SaveMovieButton = ({movie}) => {
-  console.log(movie);
 
   function addToLocalStorage () {
-    let jsonMovies = JSON.parse(localStorage.getItem("movies"));
-    let movies = [];
 
-    for (let i = 0; i < jsonMovies.length; i++) {
-        movies.push(jsonMovies[i]);
-    }
+    const localStorageMovie = {title:movie['fullTitle'], poster:movie['image'], description:movie['crew']};
+    const movies = JSON.parse(localStorage.getItem("movies")  || "[]"); 
+    movies.push(localStorageMovie);
+    localStorage.setItem('movies', JSON.stringify(movies));
+    populateList(movie);
 
-    movies.push(movie);
-
-
-    let moviesLocal = JSON.stringify(movies);
-    localStorage.setItem("movies", movies);
   };
-
-
-
 
 
 return (

@@ -13,15 +13,18 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Header } from './components/Header';
 import { MovieDisplay } from './components/MovieDisplay';
 import { Divider } from './components/Divider';
-import { WatchList } from './components/WatchList';
+import { WatchList, printMovies,loadMovies} from './components/WatchList';
 import FetchMovieButton from './components/FetchMovieButton';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 
 function App() {
 
 const [movie,setMovie] = useState(null);
 
-console.log(movie)
+useEffect(() => {
+  const movies = loadMovies();
+  printMovies(movies);
+}, []);
 
   return (
     <ChakraProvider theme={theme}>
@@ -40,7 +43,7 @@ console.log(movie)
       </Box>
     </ChakraProvider>
   );
-
 }
+
 
 export default App;
