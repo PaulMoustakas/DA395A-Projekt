@@ -19,7 +19,7 @@ export const FetchMovieButton = ({movie}) => {
   }
 
   return (
-    <Button colorScheme='gray' onClick={fetchMovie}>Fetch new movie from IMDB Top250</Button>
+    <Button colorScheme='yellow' onClick={fetchMovie}>Fetch new movie from IMDB Top250</Button>
   );
 }
 
