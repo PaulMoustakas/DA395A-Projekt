@@ -34,6 +34,7 @@ import {
   var crew = document.createTextNode(movie['crew']);
   tdCrew.append(crew);
 
+  tableMovie.style.fontSize="12px"
   tableMovie.append(tdPoster);
   tableMovie.append(tdTitle);
   tableMovie.append(tdCrew);
