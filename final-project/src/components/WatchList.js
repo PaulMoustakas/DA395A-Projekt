@@ -8,16 +8,16 @@ import {
   Grid,
   Image,
   theme,
-  Button, 
+  Button,
   Table,Thead,Tbody,Tfoot,Th,Td,TableCaption, Tr, IconButton, list
 } from '@chakra-ui/react';
 
- function populateList (movie) { 
+ function populateList (movie) {
 
   console.log(movie);
 
   let tableMovie = document.createElement("tr");
- 
+
   let tdTitle = document.createElement("td");
   var titleText = document.createTextNode(movie['fullTitle']);
   tdTitle.append(titleText);
@@ -41,13 +41,16 @@ import {
 }
 
 function loadMovies () {
-  
+
+
   let jsonMovies = JSON.parse(localStorage.getItem("movies"));
   let movies = [];
 
+  if (jsonMovies != null) {
     for (let i = 0; i < jsonMovies.length; i++) {
-        movies.push(jsonMovies[i]);
+      movies.push(jsonMovies[i]);
     }
+  }
 
     return movies;
 }
@@ -55,29 +58,29 @@ function loadMovies () {
 function printMovies (movies) {
 
   for (let i = 0; i < movies.length; i++) {
- 
+
     let tableMovie = document.createElement("tr");
 
     let tdTitle = document.createElement("td");
     var titleText = document.createTextNode(movies[i]['title']);
     tdTitle.append(titleText);
-  
+
     let tdPoster = document.createElement("td");
     var poster = document.createElement("img");
     poster.setAttribute("src",movies[i]['poster']);
     tdPoster.append(poster);
-  
+
     let tdCrew = document.createElement("td");
     var crew = document.createTextNode(movies[i]['description']);
     tdCrew.append(crew);
-  
+
     tableMovie.append(tdPoster);
     tableMovie.append(tdTitle);
-    tableMovie.append(tdCrew);  
+    tableMovie.append(tdCrew);
 
     tableMovie.style.color="red";
     tableMovie.style.gap="100";
-     
+
     document.getElementById("movieTable").append(tableMovie);
   }
 }
