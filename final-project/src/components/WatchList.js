@@ -1,16 +1,4 @@
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  Image,
-  theme,
-  Button, 
-  Table,Thead,Tbody,Tfoot,Th,Td,TableCaption, Tr, IconButton
-} from '@chakra-ui/react';
+import { Box,Table,Thead,Tbody,Th,TableCaption, Tr } from '@chakra-ui/react';
 
 
 
