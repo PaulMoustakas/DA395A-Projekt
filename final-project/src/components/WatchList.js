@@ -6,7 +6,8 @@ import { Box, Table,Thead,Tbody,Th, Tr } from '@chakra-ui/react';
    let tableMovie = document.createElement("tr");
    let tdTitle = document.createElement("td");
    var titleText = document.createTextNode(movie['fullTitle']);
-   tdTitle.style.margin="20px"
+   tdTitle.style.margin="50px"
+
    tdTitle.append(titleText);
 
    let tdPoster = document.createElement("td");
@@ -18,6 +19,7 @@ import { Box, Table,Thead,Tbody,Th, Tr } from '@chakra-ui/react';
 
    let tdCrew = document.createElement("td");
    var crew = document.createTextNode(movie['crew']);
+   tdCrew.style.width="300px";
    tdCrew.append(crew);
 
    tableMovie.style.fontSize="12px"
@@ -77,8 +79,8 @@ export function WatchList () {
         <Thead>
           <Tr>
             <Th textAlign="center">Poster</Th>
-            <Th textAlign="center">Title</Th>
-            <Th textAlign="center">Crew</Th>
+            <Th textAlign="center" width="200px">Title</Th>
+            <Th textAlign="center" width="200px">Crew</Th>
          </Tr>
       </Thead>
       <Tbody>
