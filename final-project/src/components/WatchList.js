@@ -2,6 +2,7 @@ import { Box, Table,Thead,Tbody,Th, Tr } from '@chakra-ui/react';
 
  function populateList (movie) {
 
+
    let tableMovie = document.createElement("tr");
    let tdTitle = document.createElement("td");
    var titleText = document.createTextNode(movie['fullTitle']);
