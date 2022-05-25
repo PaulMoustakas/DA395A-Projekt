@@ -13,6 +13,7 @@ export const SaveMovieButton = ({movie}) => {
 
   };
 
+  };
 
 return (
   <Button
@@ -34,7 +35,5 @@ return (
   </Button>
 );
 }
-
-
 
 export default SaveMovieButton;
