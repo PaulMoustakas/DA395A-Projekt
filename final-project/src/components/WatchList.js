@@ -1,48 +1,33 @@
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  Image,
-  theme,
-  Button,
-  Table,Thead,Tbody,Tfoot,Th,Td,TableCaption, Tr, IconButton, list
-} from '@chakra-ui/react';
+import { Box, Table,Thead,Tbody,Th, Tr } from '@chakra-ui/react';
 
  function populateList (movie) {
 
-  console.log(movie);
+   let tableMovie = document.createElement("tr");
+   let tdTitle = document.createElement("td");
+   var titleText = document.createTextNode(movie['fullTitle']);
+   tdTitle.style.margin="20px"
+   tdTitle.append(titleText);
 
-  let tableMovie = document.createElement("tr");
+   let tdPoster = document.createElement("td");
+   var poster = document.createElement("img");
+   poster.setAttribute("src",movie['image']);
+   poster.style.borderRadius="15px";
+   poster.style.margin="15px"
+   tdPoster.append(poster);
 
-  let tdTitle = document.createElement("td");
-  var titleText = document.createTextNode(movie['fullTitle']);
-  tdTitle.style.margin="20px"
-  tdTitle.append(titleText);
+   let tdCrew = document.createElement("td");
+   var crew = document.createTextNode(movie['crew']);
+   tdCrew.append(crew);
 
-  let tdPoster = document.createElement("td");
-  var poster = document.createElement("img");
-  poster.setAttribute("src",movie['image']);
-  poster.style.borderRadius="15px";
-  poster.style.margin="15px"
-  tdPoster.append(poster);
+   tableMovie.style.fontSize="12px"
+   tableMovie.append(tdPoster);
+   tableMovie.append(tdTitle);
+   tableMovie.append(tdCrew);
 
-  let tdCrew = document.createElement("td");
-  var crew = document.createTextNode(movie['crew']);
-  tdCrew.append(crew);
-
-  tableMovie.append(tdPoster);
-  tableMovie.append(tdTitle);
-  tableMovie.append(tdCrew);
-
-  document.getElementById("movieTable").append(tableMovie);
+   document.getElementById("movieTable").append(tableMovie);
 }
 
 function loadMovies () {
-
   let jsonMovies = JSON.parse(localStorage.getItem("movies"));
   let movies = [];
 
@@ -51,14 +36,11 @@ function loadMovies () {
       movies.push(jsonMovies[i]);
     }
   }
-
-    return movies;
+  return movies;
 }
 
 function printMovies (movies) {
-
   for (let i = 0; i < movies.length; i++) {
-
     let tableMovie = document.createElement("tr");
 
     let tdTitle = document.createElement("td");
@@ -88,23 +70,21 @@ function printMovies (movies) {
 }
 
 export function WatchList () {
-
   return (
-<Box overflow="auto" minHeight="50vh" maxHeight="50vh" maxWidth="80vh" >
-  <Table variant='simple' size="sm" id = "movieTable" >
-    <Thead>
-      <Tr >
-        <Th textAlign="center">Poster</Th>
-        <Th textAlign="center">Title</Th>
-        <Th textAlign="center">Crew</Th>
-        <Th ></Th>
-      </Tr>
-    </Thead>
-    <Tbody>
-    </Tbody>
-  </Table>
-</Box>
-)
+    <Box overflow="auto" minHeight="50vh" maxHeight="50vh" maxWidth="80vh" >
+      <Table variant='simple' size="sm" id = "movieTable">
+        <Thead>
+          <Tr>
+            <Th textAlign="center">Poster</Th>
+            <Th textAlign="center">Title</Th>
+            <Th textAlign="center">Crew</Th>
+         </Tr>
+      </Thead>
+      <Tbody>
+      </Tbody>
+    </Table>
+   </Box>
+ )
 }
 
 export {populateList,printMovies,loadMovies};
