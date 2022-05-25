@@ -11,7 +11,6 @@ import {
   Button, 
   Table,Thead,Tbody,Tfoot,Th,Td,TableCaption, Tr, IconButton, list
 } from '@chakra-ui/react';
-import { Box,Table,Thead,Tbody,Th,TableCaption, Tr } from '@chakra-ui/react';
 
  function populateList (movie) { 
 

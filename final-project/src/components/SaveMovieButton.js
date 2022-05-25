@@ -11,7 +11,6 @@ export const SaveMovieButton = ({movie}) => {
     localStorage.setItem('movies', JSON.stringify(movies));
     populateList(movie);
 
-  };
 
   };
 
