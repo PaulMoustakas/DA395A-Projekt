@@ -60,8 +60,8 @@ return (
     <Text mt={2} color='gray.500'>
      {movie != null ? "Crew:" + movie.crew : null}
     </Text>
+    <SaveMovieButton movie={movie}/>
   </Box>
-  <SaveMovieButton />
 </Box>
 );
 }
