@@ -1,26 +1,9 @@
 import { Button } from '@chakra-ui/react';
-import LoadFromLocal from './LoadFromLocalStorage';
-
 
 export const SaveMovieButton = ({movie}) => {
-  console.log(movie);
 
   function addToLocalStorage () {
-    let jsonMovies = JSON.parse(localStorage.getItem("movies"));
-    let movies = [];
-
-    for (let i = 0; i < jsonMovies.length; i++) {
-        movies.push(jsonMovies[i]);
-    }
-
-    movies.push(movie);
-
-
-    let moviesLocal = JSON.stringify(movies);
-    localStorage.setItem("movies", movies);
   };
-
-
 
 
 
@@ -44,7 +27,5 @@ return (
   </Button>
 );
 }
-
-
 
 export default SaveMovieButton;
