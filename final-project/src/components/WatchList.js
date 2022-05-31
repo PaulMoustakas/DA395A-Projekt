@@ -1,39 +1,28 @@
 import { Td, Box, Table,Thead,Tbody,Th, Tr } from '@chakra-ui/react';
-import MovieTableRow from './MovieTableRow';
+import { useState, useEffect,refetch} from 'react';
+import { MovieTableRow } from './MovieTableRow'; 
+
+export function WatchList () {
 
 
+  const [movieArray, setMovieArray] = useState([{
+    title: "",
+    poster: "",
+    crew: "",
+  }]);
 
-function loadMovies () {
-  let jsonMovies = JSON.parse(localStorage.getItem("movies"));
-  let movies = [];
+    useEffect(() => {
+        setMovieArray(JSON.parse(localStorage.getItem("movies")));
+        window.addEventListener('storage', storageEventHandler, false);
+    }, []);
 
-  if (jsonMovies != null) {
-    for (let i = 0; i < jsonMovies.length; i++) {
-      movies.push(jsonMovies[i]);
+    function storageEventHandler() {
+      setMovieArray(JSON.parse(localStorage.getItem("movies")));
     }
-  }
-
-  return movies;
-}
-
-
-export function WatchList (movies) {
-
-
-  for (let i = 0; i < movies.length; i++) {
-
-    var obj = movies[i];
-    var result = Object.entries(obj);
-  /*  var result = Object.keys(obj).map((key) => [Number(key), obj[key]]); */
-
-    console.log(result);
-
-  }
-
 
 
   return (
-    <Box overflow="auto" minHeight="50vh" maxHeight="50vh" maxWidth="80vh" >
+    <Box overflow="auto"  maxHeight="50vh" maxWidth="80vh" >
       <Table variant='simple' size="sm" id = "movieTable">
         <Thead>
           <Tr>
@@ -44,14 +33,13 @@ export function WatchList (movies) {
       </Thead>
       <Tbody>
 
-
-      </Tbody>
+      <MovieTableRow items = {movieArray != null ? movieArray : null }/>
+   
+         </Tbody>
     </Table>
    </Box>
+
  )
-}
+};
 
 
-
-
-export {loadMovies};

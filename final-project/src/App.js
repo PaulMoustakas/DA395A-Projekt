@@ -18,17 +18,13 @@ function App() {
 
 const [movie,setMovie] = useState(null);
 
-useEffect(() => {
-  const movies = loadMovies();
-  WatchList(movies);
-}, []);
-
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
+
           <Header />
           <FetchMovieButton movie={ response => setMovie(response)} />
           <MovieDisplay movie={movie} />

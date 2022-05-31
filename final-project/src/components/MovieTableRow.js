@@ -1,26 +1,19 @@
-import React from "react";
-import {Td, Tr } from '@chakra-ui/react';
+import React, { Component } from "react";
+import {Td, Tr, Image} from '@chakra-ui/react';
 
 
-export default function MovieTableRow (props) {
+export function MovieTableRow({ items }) {
 
-    console.log(props);
-
-    if (props != null) {
-    return (
-      <Tr>
-          <Td  >
-            hej  {props.item.title}
-          </Td>
-
-          <Td>
-              {props.item.poster}
-          </Td>
-
-          <Td>
-             {props.item.crew}
-          </Td>
-      </Tr>
-    )
+    if (items != null) {
+    return items.map(item => (
+        <Tr>
+            <Td><Image margin={"auto"} maxWidth={'10em'} borderRadius={"5px"} src={item.poster}/></Td>
+            <Td textAlign={"center"}>{item.title}</Td>
+            <Td>{item.description}</Td>
+            
+            </Tr>
+        
+    ));
     }
 }
+
