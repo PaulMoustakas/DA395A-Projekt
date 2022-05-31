@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const FetchMovieButton = ({movie}) => {
   const fetchMovie = async () => {
-  const imdbKey = 'k_khdf7dt8';
+  const imdbKey = 'k_qwo5vxl7';
 
   try {
     const res = await axios.get('https://imdb-api.com/en/API/Top250Movies/'+imdbKey, {});
