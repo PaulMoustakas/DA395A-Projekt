@@ -4,14 +4,13 @@ import { populateList } from './WatchList';
 export const SaveMovieButton = ({movie}) => {
 
   function addToLocalStorage () {
-
+    console.log("localstorage")
     const localStorageMovie = {title:movie['fullTitle'], poster:movie['image'], description:movie['crew']};
     const movies = JSON.parse(localStorage.getItem("movies")  || "[]");
     movies.push(localStorageMovie);
     localStorage.setItem('movies', JSON.stringify(movies));
-    populateList(movie);
-
-
+    window.dispatchEvent(new Event("storage"));
+    
   };
 
 return (
@@ -33,6 +32,7 @@ return (
   >
     Add to WatchList
   </Button>
+  
 );
 }
 

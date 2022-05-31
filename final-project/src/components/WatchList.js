@@ -1,42 +1,22 @@
-import { Box, Table,Thead,Tbody,Th, Tr } from '@chakra-ui/react';
+import { Td, Box, Table,Thead,Tbody,Th, Tr } from '@chakra-ui/react';
+import { useState, useEffect,refetch} from 'react';
+import { MovieTableRow } from './MovieTableRow'; 
 
- function populateList (movie) {
+export function WatchList () {
 
+  const [movieArray, setMovieArray] = useState([{
+    title: "",
+    poster: "",
+    crew: "",
+  }]);
 
-   let tableMovie = document.createElement("tr");
-   let tdTitle = document.createElement("td");
-   var titleText = document.createTextNode(movie['fullTitle']);
-   tdTitle.style.margin="50px"
+    useEffect(() => {
+        setMovieArray(JSON.parse(localStorage.getItem("movies")));
+        window.addEventListener('storage', storageEventHandler, false);
+    }, []);
 
-   tdTitle.append(titleText);
-
-   let tdPoster = document.createElement("td");
-   var poster = document.createElement("img");
-   poster.setAttribute("src",movie['image']);
-   poster.style.borderRadius="15px";
-   poster.style.margin="15px"
-   tdPoster.append(poster);
-
-   let tdCrew = document.createElement("td");
-   var crew = document.createTextNode(movie['crew']);
-   tdCrew.style.width="300px";
-   tdCrew.append(crew);
-
-   tableMovie.style.fontSize="12px"
-   tableMovie.append(tdPoster);
-   tableMovie.append(tdTitle);
-   tableMovie.append(tdCrew);
-
-   document.getElementById("movieTable").append(tableMovie);
-}
-
-function loadMovies () {
-  let jsonMovies = JSON.parse(localStorage.getItem("movies"));
-  let movies = [];
-
-  if (jsonMovies != null) {
-    for (let i = 0; i < jsonMovies.length; i++) {
-      movies.push(jsonMovies[i]);
+    function storageEventHandler() {
+      setMovieArray(JSON.parse(localStorage.getItem("movies")));
     }
   }
   return movies;
@@ -73,8 +53,9 @@ function printMovies (movies) {
 }
 
 export function WatchList () {
+
   return (
-    <Box overflow="auto" minHeight="50vh" maxHeight="50vh" maxWidth="80vh" >
+    <Box overflow="auto"  maxHeight="50vh" maxWidth="80vh" >
       <Table variant='simple' size="sm" id = "movieTable">
         <Thead>
           <Tr>
@@ -85,9 +66,12 @@ export function WatchList () {
       </Thead>
       <Tbody>
       </Tbody>
+
+      <MovieTableRow items = {movieArray != null ? movieArray : null }/>
+   
+         </Tbody>
     </Table>
    </Box>
- )
-}
 
-export {populateList,printMovies,loadMovies};
+ )
+};
