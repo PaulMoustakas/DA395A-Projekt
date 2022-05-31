@@ -20,7 +20,7 @@ const [movie,setMovie] = useState(null);
 
 useEffect(() => {
   const movies = loadMovies();
-  printMovies(movies);
+  WatchList(movies);
 }, []);
 
   return (
@@ -29,7 +29,6 @@ useEffect(() => {
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
-
           <Header />
           <FetchMovieButton movie={ response => setMovie(response)} />
           <MovieDisplay movie={movie} />
