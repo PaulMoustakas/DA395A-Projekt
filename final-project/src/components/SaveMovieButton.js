@@ -9,9 +9,7 @@ export const SaveMovieButton = ({movie}) => {
     const movies = JSON.parse(localStorage.getItem("movies")  || "[]");
     movies.push(localStorageMovie);
     localStorage.setItem('movies', JSON.stringify(movies));
-    populateList(movie);
-
-
+    window.dispatchEvent(new Event("storage"));
   };
 
 return (
