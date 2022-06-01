@@ -1,10 +1,10 @@
 import { Button } from '@chakra-ui/react';
-import { populateList } from './WatchList';
+import { WatchList } from './WatchList';
 
 export const SaveMovieButton = ({movie}) => {
 
   function addToLocalStorage () {
-
+    console.log("localstorage")
     const localStorageMovie = {title:movie['fullTitle'], poster:movie['image'], description:movie['crew']};
     const movies = JSON.parse(localStorage.getItem("movies")  || "[]");
     movies.push(localStorageMovie);
@@ -31,6 +31,7 @@ return (
   >
     Add to WatchList
   </Button>
+  
 );
 }
 

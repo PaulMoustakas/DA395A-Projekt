@@ -8,8 +8,6 @@ export const FetchMovieButton = ({movie}) => {
   try {
     const res = await axios.get('https://imdb-api.com/en/API/Top250Movies/'+imdbKey, {});
     const randomID =  Math.floor(Math.random() * 250) + 1;
-
-
     var dataIn = res.data['items'][randomID];
 
     dataIn.image.split("_V1_"[0]);

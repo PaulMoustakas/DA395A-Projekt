@@ -1,12 +1,28 @@
 import { Box, Table,Thead,Tbody,Th, Tr } from '@chakra-ui/react';
 import { useState, useEffect} from 'react';
-import { MovieTableRow } from './MovieTableRow';
-
+import { MovieTableRow } from './MovieTableRow'; 
 
 export function WatchList () {
+
+  const [movieArray, setMovieArray] = useState([{
+    title: "",
+    poster: "",
+    crew: "",
+  }]);
+
+    useEffect(() => {
+        setMovieArray(JSON.parse(localStorage.getItem("movies")));
+        window.addEventListener('storage', storageEventHandler, false);
+    }, []);
+
+    function storageEventHandler() {
+      setMovieArray(JSON.parse(localStorage.getItem("movies")));
+    }
+  
+
   return (
     <Box overflow="auto"  maxHeight="50vh" maxWidth="80vh" >
-      <Table variant='simple' size="lg" id = "movieTable">
+      <Table variant='simple' size="sm" id = "movieTable">
         <Thead>
           <Tr>
             <Th textAlign="center">Poster</Th>
@@ -15,13 +31,11 @@ export function WatchList () {
          </Tr>
       </Thead>
       <Tbody>
-
       <MovieTableRow items = {movieArray != null ? movieArray : null }/>
 
-         </Tbody>
+        </Tbody>
     </Table>
    </Box>
- )
-}
 
-export {populateList,printMovies,loadMovies};
+ )
+};

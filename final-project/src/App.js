@@ -18,10 +18,6 @@ function App() {
 
 const [movie,setMovie] = useState(null);
 
-useEffect(() => {
-  const movies = loadMovies();
-  printMovies(movies);
-}, []);
 
   return (
     <ChakraProvider theme={theme}>
