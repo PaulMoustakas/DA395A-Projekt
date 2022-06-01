@@ -1,6 +1,6 @@
 import { Box, Table,Thead,Tbody,Th, Tr } from '@chakra-ui/react';
 import { useState, useEffect} from 'react';
-import { MovieTableRow } from './MovieTableRow'; 
+import { MovieTableRow } from './MovieTableRow';
 
 export function WatchList () {
 
@@ -18,7 +18,7 @@ export function WatchList () {
     function storageEventHandler() {
       setMovieArray(JSON.parse(localStorage.getItem("movies")));
     }
-  
+
 
   return (
     <Box overflow="auto"  maxHeight="50vh" maxWidth="80vh" >

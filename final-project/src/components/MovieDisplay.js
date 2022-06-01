@@ -9,12 +9,12 @@ export const MovieDisplay = ({movie}) => {
       justifyContent="center">
         <Image
         borderRadius='lg'
-        width={{ md: 40 }}
+        width={{ md: 60 }}
         src={movie != null ? movie.image : "https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo._CB410901634_.png" }
         alt='Woman paying for a purchase'
         />
       </Box>
-      <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }} maxWidth="10em" justifyContent="center">
+      <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}  justifyContent="center">
         <Text
         fontWeight='bold'
         textTransform='uppercase'
