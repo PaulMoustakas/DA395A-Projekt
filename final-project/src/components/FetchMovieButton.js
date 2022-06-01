@@ -10,10 +10,13 @@ export const FetchMovieButton = ({movie}) => {
     const randomID =  Math.floor(Math.random() * 250) + 1;
     var dataIn = res.data['items'][randomID];
 
-    dataIn.image.split("_V1_"[0] );
-    console.log(dataIn.image.split("_V1_")[0] + "Ratio0.6716_AL_.jpg");
-
+    dataIn.image.split("_V1_"[0]);
+    dataIn.image = dataIn.image.split("_V1_")[0] + "Ratio0.6716_AL_.jpg"
     movie(dataIn);
+
+
+    console.log(dataIn.image);
+
 
   } catch (err) {
     console.log(err);

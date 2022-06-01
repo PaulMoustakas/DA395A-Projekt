@@ -31,10 +31,9 @@ export function WatchList () {
          </Tr>
       </Thead>
       <Tbody>
-
       <MovieTableRow items = {movieArray != null ? movieArray : null }/>
-   
-         </Tbody>
+
+        </Tbody>
     </Table>
    </Box>
 
