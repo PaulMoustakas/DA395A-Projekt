@@ -23,9 +23,21 @@ export function WatchList () {
     function addToSeen (id) {
       const localStorageSeenMovie = {id:id};
       const seenMovies = JSON.parse(localStorage.getItem("seenMovies")  || "[]");
-      seenMovies.push(localStorageSeenMovie);
-      localStorage.setItem('seenMovies', JSON.stringify(seenMovies));
-      window.dispatchEvent(new Event("storage"));
+
+      for (let i = 0; i < seenMovies.length; i++) {
+
+        if (id != seenMovies[i].id) {
+          seenMovies.push(localStorageSeenMovie);
+          localStorage.setItem('seenMovies', JSON.stringify(seenMovies));
+          window.dispatchEvent(new Event("storage"));
+        }
+
+        else { 
+          alert("You've already marked this movie as seen!")
+        }
+      }
+
+
     }
 
     function deleteItem(id) {
