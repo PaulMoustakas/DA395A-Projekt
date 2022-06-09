@@ -29,17 +29,14 @@ export function WatchList () {
     }
 
     function deleteItem(id) {
-     
       let movies = JSON.parse(localStorage.getItem("movies"));
-
       let newArray = movies.filter (function(el) {
-          
         return el.id !== id;
       });
 
       localStorage.setItem('movies',JSON.stringify(newArray));
       window.dispatchEvent(new Event("storage"));
-     
+
     }
 
 
@@ -51,7 +48,7 @@ export function WatchList () {
             <Th textAlign="center">Poster</Th>
             <Th textAlign="center" width="200px">Title</Th>
             <Th textAlign="center" width="200px">Crew</Th>
-            <Th textAlign="center" width="200px">Opt</Th>
+            <Th alignItems="center" width="200px">Delete</Th>
          </Tr>
       </Thead>
       <Tbody>
