@@ -9,6 +9,7 @@ export function WatchList () {
     title: "",
     poster: "",
     crew: "",
+    seen: "",
   }]);
 
     useEffect(() => {
@@ -20,25 +21,33 @@ export function WatchList () {
       setMovieArray(JSON.parse(localStorage.getItem("movies")));
     }
 
+
     function addToSeen (id) {
       const localStorageSeenMovie = {id:id};
-      const seenMovies = JSON.parse(localStorage.getItem("seenMovies")  || "[]");
+      let seenMovies = JSON.parse(localStorage.getItem("seenMovies")  || "[]");
 
-      for (let i = 0; i < seenMovies.length; i++) {
-
-        if (id != seenMovies[i].id) {
-          seenMovies.push(localStorageSeenMovie);
-          localStorage.setItem('seenMovies', JSON.stringify(seenMovies));
-          window.dispatchEvent(new Event("storage"));
+      if (seenMovies.find(e => e.id === id )) {
+          removeFromSeen(id);
         }
 
-        else { 
-          alert("You've already marked this movie as seen!")
-        }
+      else {
+        seenMovies.push(localStorageSeenMovie);
+        localStorage.setItem('seenMovies', JSON.stringify(seenMovies));
       }
-
-
+        window.dispatchEvent(new Event("storage"));
     }
+
+
+    function removeFromSeen (id) {
+      let seenMovies = JSON.parse(localStorage.getItem("seenMovies"));
+      let newArray = seenMovies.filter (function(el) {
+        return el.id !== id;
+      });
+
+      localStorage.setItem('seenMovies',JSON.stringify(newArray));
+      window.dispatchEvent(new Event("storage"));
+    }
+
 
     function deleteItem(id) {
       let movies = JSON.parse(localStorage.getItem("movies"));
@@ -48,7 +57,6 @@ export function WatchList () {
 
       localStorage.setItem('movies',JSON.stringify(newArray));
       window.dispatchEvent(new Event("storage"));
-
     }
 
 
@@ -60,16 +68,14 @@ export function WatchList () {
             <Th textAlign="center">Poster</Th>
             <Th textAlign="center" width="200px">Title</Th>
             <Th textAlign="center" width="200px">Crew</Th>
-            <Th alignItems="center" width="200px">Delete</Th>
+            <Th alignItems="center" width="100px">Seen</Th>
+            <Th alignItems="center" width="100px">Delete</Th>
          </Tr>
       </Thead>
       <Tbody>
-      {movieArray != null ? movieArray.map(movie => <Movie key={movie.id} item={movie} addToSeen={addToSeen} deleteItem={deleteItem} /> ) : null}
-
-
-        </Tbody>
+      {movieArray != null ? movieArray.map(movie => <Movie key={movie.id} item={movie} addToSeen={addToSeen}  deleteItem={deleteItem} /> ) : null}
+      </Tbody>
     </Table>
    </Box>
-
  )
 };
