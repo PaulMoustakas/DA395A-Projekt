@@ -9,6 +9,7 @@ export function WatchList () {
     title: "",
     poster: "",
     crew: "",
+    seen: "",
   }]);
 
     useEffect(() => {
@@ -20,36 +21,33 @@ export function WatchList () {
       setMovieArray(JSON.parse(localStorage.getItem("movies")));
     }
 
+
     function addToSeen (id) {
       const localStorageSeenMovie = {id:id};
       let seenMovies = JSON.parse(localStorage.getItem("seenMovies")  || "[]");
 
-      for (let i = 0; i < seenMovies.lenght; i++) {
-          if (seenMovies[i].id == id) {
-            console.log("move exist");
+      if (seenMovies.find(e => e.id === id )) {
+          removeFromSeen(id);
+        }
 
-      }
       else {
-           console.log("move not founf");
+        seenMovies.push(localStorageSeenMovie);
+        localStorage.setItem('seenMovies', JSON.stringify(seenMovies));
       }
-
-
-      }
-
-
-        let movies = JSON.parse(localStorage.getItem("movies"));
-        let newArray = movies.filter (function(el) {
-          return el.id !== id;
-        });
-
-        localStorage.setItem('movies',JSON.stringify(newArray));
         window.dispatchEvent(new Event("storage"));
-
     }
 
-      localStorage.setItem('seenMovies', JSON.stringify(seenMovies));
+
+    function removeFromSeen (id) {
+      let seenMovies = JSON.parse(localStorage.getItem("seenMovies"));
+      let newArray = seenMovies.filter (function(el) {
+        return el.id !== id;
+      });
+
+      localStorage.setItem('seenMovies',JSON.stringify(newArray));
       window.dispatchEvent(new Event("storage"));
     }
+
 
     function deleteItem(id) {
       let movies = JSON.parse(localStorage.getItem("movies"));
@@ -75,7 +73,7 @@ export function WatchList () {
          </Tr>
       </Thead>
       <Tbody>
-      {movieArray != null ? movieArray.map(movie => <Movie key={movie.id} item={movie} addToSeen={addToSeen} deleteItem={deleteItem} /> ) : null}
+      {movieArray != null ? movieArray.map(movie => <Movie key={movie.id} item={movie} addToSeen={addToSeen}  deleteItem={deleteItem} /> ) : null}
       </Tbody>
     </Table>
    </Box>
