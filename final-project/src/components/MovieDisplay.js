@@ -2,6 +2,25 @@ import { Box, Text, Image } from '@chakra-ui/react';
 import SaveMovieButton from './SaveMovieButton';
 
 export const MovieDisplay = ({movie}) => {
+
+
+  function checkIfMovieSeen (movie) {
+   const seenMovies = JSON.parse(localStorage.getItem("seenMovies")  || "[]");
+   let movieIsSeen = false; 
+
+   if (movie != null) {
+   
+   for (let i = 0; i < seenMovies.length; i++ ) {
+    if (seenMovies[i].id == movie.id) {
+    movieIsSeen = true; 
+    }
+   }
+}
+
+   return movieIsSeen;
+  }
+
+
   return (
     <Box p={4} display={{ md: 'flex' }}>
       <Box flexShrink={0}
@@ -31,10 +50,11 @@ export const MovieDisplay = ({movie}) => {
         <Text mt={2} color='gray.500'>
         {movie != null ? "Crew:" + movie.crew : null}
         </Text>
-        {movie != null ? <SaveMovieButton movie={movie}/> :null }
+        {checkIfMovieSeen(movie) != true ? <SaveMovieButton movie={movie}/> : "You have already seen this movie!" }
       </Box>
     </Box>
   );
 }
+
 
 export default MovieDisplay;
