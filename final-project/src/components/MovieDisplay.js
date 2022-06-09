@@ -6,13 +6,13 @@ export const MovieDisplay = ({movie}) => {
 
   function checkIfMovieSeen (movie) {
    const seenMovies = JSON.parse(localStorage.getItem("seenMovies")  || "[]");
-   let movieIsSeen = false; 
+   let movieIsSeen = false;
 
    if (movie != null) {
-   
+
    for (let i = 0; i < seenMovies.length; i++ ) {
     if (seenMovies[i].id == movie.id) {
-    movieIsSeen = true; 
+    movieIsSeen = true;
     }
    }
 }
