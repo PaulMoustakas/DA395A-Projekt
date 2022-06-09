@@ -20,6 +20,14 @@ export function WatchList () {
       setMovieArray(JSON.parse(localStorage.getItem("movies")));
     }
 
+    function addToSeen (id) {
+      const localStorageSeenMovie = {id:id};
+      const seenMovies = JSON.parse(localStorage.getItem("seenMovies")  || "[]");
+      seenMovies.push(localStorageSeenMovie);
+      localStorage.setItem('seenMovies', JSON.stringify(seenMovies));
+      window.dispatchEvent(new Event("storage"));
+    }
+
     function deleteItem(id) {
      
       let movies = JSON.parse(localStorage.getItem("movies"));
@@ -47,7 +55,7 @@ export function WatchList () {
          </Tr>
       </Thead>
       <Tbody>
-      {movieArray != null ? movieArray.map(movie => <Movie key={movie.id} item={movie} deleteItem={deleteItem} /> ) : null}
+      {movieArray != null ? movieArray.map(movie => <Movie key={movie.id} item={movie} addToSeen={addToSeen} deleteItem={deleteItem} /> ) : null}
 
 
         </Tbody>
@@ -56,5 +64,3 @@ export function WatchList () {
 
  )
 };
-
-/*   //<MovieTableRow items = {movieArray != null ? movieArray : null }/> */
