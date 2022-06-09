@@ -24,19 +24,27 @@ export function WatchList () {
       const localStorageSeenMovie = {id:id};
       let seenMovies = JSON.parse(localStorage.getItem("seenMovies")  || "[]");
 
-      if (seenMovies.length == 0) {
-        seenMovies.push(localStorageSeenMovie);
+      for (let i = 0; i < seenMovies.lenght; i++) {
+          if (seenMovies[i].id == id) {
+            console.log("move exist");
+
+      }
+      else {
+           console.log("move not founf");
       }
 
-      else {
-      for (let i = 0; i < seenMovies.length; i++) {
-        if (seenMovies[i].id == localStorageSeenMovie.id) {
-          seenMovies.splice(i, 1);
-        }
-        else {
-          seenMovies.push(localStorageSeenMovie);
-        }
+
       }
+
+
+        let movies = JSON.parse(localStorage.getItem("movies"));
+        let newArray = movies.filter (function(el) {
+          return el.id !== id;
+        });
+
+        localStorage.setItem('movies',JSON.stringify(newArray));
+        window.dispatchEvent(new Event("storage"));
+
     }
 
       localStorage.setItem('seenMovies', JSON.stringify(seenMovies));
@@ -51,7 +59,6 @@ export function WatchList () {
 
       localStorage.setItem('movies',JSON.stringify(newArray));
       window.dispatchEvent(new Event("storage"));
-
     }
 
 
