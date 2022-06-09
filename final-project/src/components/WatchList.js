@@ -21,11 +21,17 @@ export function WatchList () {
     }
 
     function deleteItem(id) {
-      setMovieArray(JSON.parse(localStorage.getItem("movies")));
-      setMovieArray(movieArray.filter((item) => item.id !== id));
-      console.log(movieArray);
-      localStorage.setItem('movies', JSON.stringify(movieArray));
+     
+      let movies = JSON.parse(localStorage.getItem("movies"));
 
+      let newArray = movies.filter (function(el) {
+          
+        return el.id !== id;
+      });
+
+      localStorage.setItem('movies',JSON.stringify(newArray));
+      window.dispatchEvent(new Event("storage"));
+     
     }
 
 
