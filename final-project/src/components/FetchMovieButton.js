@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const FetchMovieButton = ({movie}) => {
   const fetchMovie = async () => {
-  const imdbKey = 'k_qwo5vxl7';
+  const imdbKey = 'k_khdf7dt8'; //  k_qwo5vxl7
 
   try {
     const res = await axios.get('https://imdb-api.com/en/API/Top250Movies/'+imdbKey, {});
@@ -14,8 +14,7 @@ export const FetchMovieButton = ({movie}) => {
     dataIn.image = dataIn.image.split("_V1_")[0] + "Ratio0.6716_AL_.jpg"
     movie(dataIn);
 
-
-    console.log(dataIn.image);
+    console.log(dataIn);
 
 
   } catch (err) {

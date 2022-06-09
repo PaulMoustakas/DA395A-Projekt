@@ -1,10 +1,11 @@
 import { Box, Table,Thead,Tbody,Th, Tr } from '@chakra-ui/react';
 import { useState, useEffect} from 'react';
-import { MovieTableRow } from './MovieTableRow';
+import { Movie } from './Movie';
 
 export function WatchList () {
 
   const [movieArray, setMovieArray] = useState([{
+    id: '',
     title: "",
     poster: "",
     crew: "",
@@ -19,6 +20,14 @@ export function WatchList () {
       setMovieArray(JSON.parse(localStorage.getItem("movies")));
     }
 
+    function deleteItem(id) {
+      setMovieArray(JSON.parse(localStorage.getItem("movies")));
+      setMovieArray(movieArray.filter((item) => item.id !== id));
+      console.log(movieArray);
+      localStorage.setItem('movies', JSON.stringify(movieArray));
+
+    }
+
 
   return (
     <Box overflow="auto"  maxHeight="50vh" maxWidth="80vh" >
@@ -28,10 +37,12 @@ export function WatchList () {
             <Th textAlign="center">Poster</Th>
             <Th textAlign="center" width="200px">Title</Th>
             <Th textAlign="center" width="200px">Crew</Th>
+            <Th textAlign="center" width="200px">Opt</Th>
          </Tr>
       </Thead>
       <Tbody>
-      <MovieTableRow items = {movieArray != null ? movieArray : null }/>
+      {movieArray != null ? movieArray.map(movie => <Movie key={movie.id} item={movie} deleteItem={deleteItem} /> ) : null}
+
 
         </Tbody>
     </Table>
@@ -39,3 +50,5 @@ export function WatchList () {
 
  )
 };
+
+/*   //<MovieTableRow items = {movieArray != null ? movieArray : null }/> */
